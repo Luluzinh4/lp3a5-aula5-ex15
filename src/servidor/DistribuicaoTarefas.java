@@ -38,9 +38,19 @@ public class DistribuicaoTarefas implements Runnable {
 						tarefa.media();
 						break;
 					case "buscar":
-						//TODO: Implementar a tarefa Busca
+						saidaCliente.println("Comando Insuficiente. "
+								+ "Insira algum parâmetro após \"buscar \"");
 						break;
 					default:
+						if(comando.contains("buscar")) {
+							String parametro = comando.substring(6).trim();
+							if(!parametro.equals("")) {
+								tarefa.buscar(parametro);
+								break;
+							}
+							saidaCliente.println("Comando Inválido! Sem parâmetro");
+							break;
+						}
 						saidaCliente.println("Comando Inválido. Digite novamente!");
 				}
 			}
