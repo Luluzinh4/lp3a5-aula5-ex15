@@ -15,7 +15,7 @@ public class DistribuicaoTarefas implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Distribuindo a tarefa do cliente: " + socket);
+		System.out.println("Distribuindo a tarefa do cliente: " + socket.getPort());
 		
 		try {
 			Scanner entradaCliente = new Scanner(socket.getInputStream());
