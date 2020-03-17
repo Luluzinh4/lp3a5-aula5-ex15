@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -92,10 +93,54 @@ public class Tarefa {
 		
 		try {
 			Scanner scanner = new Scanner(new File("clientes.txt"));
+			ArrayList<String> lista = new ArrayList<>();
+			String[] listaClientes;
+			
+//			saidaCliente.println("Entrando no While");
 			
 			while(scanner.hasNextLine()) {
-				saidaCliente.println(scanner.nextLine());
+//				saidaCliente.println(scanner.nextLine());
+				String linha = scanner.nextLine();
+				lista.add(linha);
+//				saidaCliente.println("Carregando lista");
 			}
+			
+			int tamanho = lista.size();
+			listaClientes = new String[tamanho];
+			
+//			saidaCliente.println("Início da segunda lista");
+			
+			int f = 0;
+			while(f < tamanho) {
+				listaClientes[f] = lista.get(f);
+//				saidaCliente.println("Carregando segunda lista");
+				f++;
+			}
+			
+//			saidaCliente.println("Hora da ordenação");
+			
+			int ind;
+			String temp;
+			for(int i = 0; i < tamanho - 1; i++) {
+				ind = i;
+				for(int j = i + 1; j < tamanho; j++) {
+					if(listaClientes[ind].compareTo(listaClientes[j]) > 0) {
+						ind = j;
+					}
+				}
+				temp = listaClientes[i];
+				listaClientes[i] = listaClientes[ind];
+				listaClientes[ind] = temp;
+				
+//				saidaCliente.println("Ordenou");
+			}
+			
+//			saidaCliente.println("Impressão");
+			
+			for(String s: listaClientes) {
+				saidaCliente.println(s);
+			}
+			
 			
 			scanner.close();
 		} catch (FileNotFoundException e) {
@@ -159,5 +204,6 @@ public class Tarefa {
 	public void setSocket(Socket socket) {
 		this.socket = socket;
 	}
+
 	
 }
