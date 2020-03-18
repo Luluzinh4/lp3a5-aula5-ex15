@@ -96,28 +96,17 @@ public class Tarefa {
 			ArrayList<String> lista = new ArrayList<>();
 			String[] listaClientes;
 			
-//			saidaCliente.println("Entrando no While");
-			
 			while(scanner.hasNextLine()) {
-//				saidaCliente.println(scanner.nextLine());
 				String linha = scanner.nextLine();
 				lista.add(linha);
-//				saidaCliente.println("Carregando lista");
 			}
 			
 			int tamanho = lista.size();
 			listaClientes = new String[tamanho];
 			
-//			saidaCliente.println("Início da segunda lista");
-			
-			int f = 0;
-			while(f < tamanho) {
+			for(int f = 0; f < tamanho; f++) {
 				listaClientes[f] = lista.get(f);
-//				saidaCliente.println("Carregando segunda lista");
-				f++;
 			}
-			
-//			saidaCliente.println("Hora da ordenação");
 			
 			int ind;
 			String temp;
@@ -131,16 +120,11 @@ public class Tarefa {
 				temp = listaClientes[i];
 				listaClientes[i] = listaClientes[ind];
 				listaClientes[ind] = temp;
-				
-//				saidaCliente.println("Ordenou");
 			}
-			
-//			saidaCliente.println("Impressão");
 			
 			for(String s: listaClientes) {
 				saidaCliente.println(s);
 			}
-			
 			
 			scanner.close();
 		} catch (FileNotFoundException e) {
